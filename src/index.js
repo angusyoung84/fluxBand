@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import App from './App';
+import { Router, RouteBinderIndexRoute, IndexRoute, browserHistory } from 'react-router';
+import Binder from './components/Binder';
 import BandsList from './components/BandsList';
 import Band from './components/Band';
 import './index.css';
@@ -11,10 +11,10 @@ import store, { history } from './store';
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}>
+      <Router path="/" component={Binder}>
         <IndexRoute component={BandsList} />
-        <Route path="/band/:name" component={Band} />
-      </Route>
+        <Router path="/band/:name" component={Band} />
+      </Router>
     </Router>
   </Provider>
 )
